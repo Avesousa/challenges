@@ -1,0 +1,43 @@
+<app-navigation [reserve]="reserve" [view]="view"></app-navigation>
+<div class="d-flex justify-content-between p-3 pl-5 pr-5">
+    <div class="card mr-2">
+        <div class="card-body p-4">
+            <h5 class="card-subtitle mb-4 color-airbn flex-row">Review trip details and adjust options if needed</h5>
+            <div class="d-flex justify-content-between">
+                <h6><strong>Dates: </strong></h6>
+                <span>{{getDate(reserve.checkin)}} to {{getDate(reserve.checkout)}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h6><strong>Guest: </strong></h6>
+                <span>{{reserve.adults + reserve.children}} Guest</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h6><strong>Trip Duration: </strong></h6>
+                <h6>{{getDays()}} nights</h6>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h6><strong>Base Price: </strong></h6>
+                <h6>{{listing.base_price}}</h6>
+            </div>
+            <hr>
+            <div *ngIf="view.is == 'review'">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="comments"><strong>Say Hello to your host:</strong></label>
+                        <textarea class="form-control" name="comments" id="" cols="30" rows="5" [(ngModel)]="reserve.message"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100" (click)="view.is = 'confirmation'">Continue</button>
+            </div>
+            <div *ngIf="view.is == 'confirmation'">
+                <button class="btn btn-primary w-100" (click)="confirm()">Confirm your reservation</button>
+            </div>
+        </div>
+    </div>
+    <app-cost #infoCost [cost]="cost" [reserve]="reserve" [listing]="listing" [view]="view" [driveAlert]="driveAlert"></app-cost>
+
+    <div *ngIf="driveAlert.isError || driveAlert.isSuccess" class="card alert-toast" [ngClass]="{'success-alert' : driveAlert.isSuccess}">
+       <span *ngIf="driveAlert.isError">Error</span> {{driveAlert.message}}
+    </div>
+
+</div>

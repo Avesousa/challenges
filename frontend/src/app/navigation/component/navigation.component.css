@@ -1,0 +1,36 @@
+a.nav-link {
+    color: white;
+}
+
+.nav-item {
+    cursor: pointer;
+    outline-color: transparent;
+}
+.nav-item.active {
+    background-color: #fff;
+    cursor: context-menu;
+}
+
+.nav-item.active a {
+    color: rgb(255, 56, 92)!important;
+}
+
+.nav, .logo{
+    position: absolute;
+}
+
+.nav{
+    left: 3rem;
+}
+
+.logo{
+    right: 3rem;
+}
+
+.navigation{
+    min-height: 72px;
+}
+
+.not-radius{
+    border-radius: 0px;
+}

@@ -1,0 +1,98 @@
+<div class="card d-flex ml-1 bg-dark text-white">
+    <div class="card-body">
+        <!-- info of listing -->
+        <div class="listing d-flex justify-content-between mb-4">
+            <div class="info-listing mr-3 align-self-center">
+                <h5 class="card-subtitle color-airbn flex-row">{{listing.name}}</h5>
+                <p class="flex-row mb-0">{{listing.description}}</p>
+                <div class="valoration">
+                    <fa-icon *ngFor="let item of fillRating(listing.valoration)" class="color-airbn" [icon]="['fas','star']"></fa-icon>
+                    <fa-icon *ngFor="let item of fillRating(5-listing.valoration)" [icon]="['fas','star']"></fa-icon>
+                </div>
+            </div>
+            <div class="img-listing">
+                <img [src]="listing.image_url" alt="name listing here!" width="100">
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- info of reserve -->
+
+        <div class="reserve mb-4">
+            <div *ngIf="view.is == 'review'" class="d-flex justify-content- mb-3">
+                <input type="date" class="form-control" name="checkin" [(ngModel)]="reserve.checkin" (change)="getCost(true)">
+                <fa-icon class="align-self-center color-airbn ml-2 mr-2" [icon]="['fas','arrow-right']"></fa-icon>
+                <input type="date" class="form-control" name="checkout" [(ngModel)]="reserve.checkout" (change)="getCost(true)">
+            </div>
+            <div *ngIf="view.is == 'confirmation'" class="d-flex justify-content- mb-3">
+                <span>{{getDate(reserve.checkin)}}</span>
+                <fa-icon class="align-self-center color-airbn ml-2 mr-2" [icon]="['fas','arrow-right']"></fa-icon>
+                <span>{{getDate(reserve.checkout)}}</span>
+            </div>
+            
+            <div class="d-flex data-reserve justify-content-between">
+                <p>how many adults?</p>
+                <div>
+
+                    <button *ngIf="view.is == 'review'" class="btn" (click)="addOrSubtract('guest','subtract')" [disabled]="reserve.adults == 0">-</button>
+                    <span [ngClass]="{'ml-3 mr-3': view.is == 'review'}">{{reserve.adults}}</span>
+                    <button *ngIf="view.is == 'review'" class="btn" (click)="addOrSubtract('guest','add')">+</button>
+
+                </div>
+            </div>
+            <div class="d-flex data-reserve justify-content-between">
+                <p>how many children?</p>
+                <div>
+
+                    <button *ngIf="view.is == 'review'" class="btn" (click)="addOrSubtract('children','subtract')" [disabled]="reserve.children == 0">-</button>
+                    <span [ngClass]="{'ml-3 mr-3': view.is == 'review'}">{{reserve.children}}</span>
+                    <button *ngIf="view.is == 'review'" class="btn" (click)="addOrSubtract('children','add')">+</button>
+
+                </div>
+            </div>
+            <div class="d-flex data-reserve justify-content-between">
+                <p>do you have pets?</p>
+                <div *ngIf="view.is == 'review'">
+
+                    <button *ngIf="listing.is_pets_allowed" class="btn mr-1" (click)="reserve.pets = true" [disabled]="reserve.pets">yes</button>
+                    <button class="btn" (click)="reserve.pets = false" [disabled]="!reserve.pets">no</button>
+
+                </div>
+
+                <span *ngIf="view.is == 'confirmation'">{{reserve.pets ? 'Yes' : 'No'}}</span>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- info of cost -->
+
+        <div class="cost">
+            <h6 class="d-row"><strong>Your reservation cost</strong></h6>
+            <div class="d-flex data-cost justify-content-between">
+                <p>Stay duration:</p>
+                <p>{{cost.nights_count}} nights</p>
+            </div>
+            <div class="d-flex data-cost justify-content-between">
+                <p>Nights cost:</p>
+                <p>{{cost.nights_cost}}$</p>
+            </div>
+            <div class="d-flex data-cost justify-content-between">
+                <p>Discount:</p>
+                <p>{{cost.discount}}$</p>
+            </div>
+            <div class="d-flex data-cost justify-content-between">
+                <p>Cleaning Fees:</p>
+                <p>{{cost.cleaning_fee}}$</p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <p class="total">Your Total:</p>
+                <p class="total-price">{{cost.total}}$</p>
+            </div>
+        </div>
+
+    </div>
+</div>

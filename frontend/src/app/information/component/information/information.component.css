@@ -1,0 +1,29 @@
+.card{
+    width: 60%;
+}
+
+app-cost{
+    width: 40%;
+}
+
+.alert-toast{
+    position: fixed;
+    color: white;
+    background-color: rgb(255, 56, 92);
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    min-width: 10%;
+    max-width: 25%;
+    padding: 10px;
+    font-weight: 100;
+}
+.alert-toast span{
+    font-weight: bold;
+}
+
+.success-alert{
+    background-color: springgreen;
+}
+

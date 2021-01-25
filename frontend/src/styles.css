@@ -1,0 +1,35 @@
+p{
+    font-weight: 100;
+}
+
+
+.color-airbn{
+    color: rgb(255, 56, 92)!important;
+}
+
+.bg-airbn{
+    background-color: rgb(255, 56, 92);
+}
+
+.btn-primary{
+    background-color: rgb(255, 56, 92);
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active{
+    background-color: rgb(192, 53, 79)!important;
+    color: #fff;
+    border: none!important;
+}
+.btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active:focus{
+    box-shadow: 0 0 0 0.2rem rgba(192, 53, 79,.25);
+}
+
+.btn-primary:active{
+    box-shadow: none;
+}
+
+.fa-star{
+    fill: #ce40b3;
+}

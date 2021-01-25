@@ -1,0 +1,35 @@
+.valoration fa-icon{
+    color: #ccc;
+}
+
+.reserve p, .cost p{
+    margin-bottom: .2rem;
+}
+
+.reserve span{
+    font-weight: 100;
+}
+
+.data-reserve{
+    margin-bottom: .5rem;
+}
+
+.data-cost>p:first-child, .data-reserve>p:first-child{
+    font-weight: 400;
+}
+
+.total{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.total-price{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+hr{
+    color: white;
+    height: 1px;
+    border-color: rgba(255, 255, 255, .25);
+}
